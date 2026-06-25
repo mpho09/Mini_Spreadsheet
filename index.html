@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Spreadsheet</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Page header with title -->
+  <header class="header">
+    <h1> Mini Spreadsheet </h1>
+    <p>A tiny Excel built with HTML, CSS & JavaScript</p>
+  </header>
+
+  <!-- Formula bar: shows raw input of the selected cell -->
+  <div class="formula-bar">
+    <input
+      type="text"
+      id="formula-input"
+      placeholder="Enter number, text, or formula (e.g. =A1+B2)"
+    />
+  </div>
+
+  <!-- Spreadsheet grid will be rendered here by app.js -->
+  <div id="spreadsheet"></div>
+
+  <!-- Link to your JavaScript logic -->
+  <script src="app.js"></script>
+</body>
+</html>
