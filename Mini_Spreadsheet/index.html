@@ -5,9 +5,27 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vite-project</title>
-  </head>
+     <!-- Tailwind is imported via index.css -->
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body class="bg-gray-100 p-6">
+  <!-- Formula bar: shows raw input of selected cell -->
+  <div class="mb-4">
+    <input
+      type="text"
+      id="formula-input"
+      class="w-full border border-gray-400 rounded p-2"
+      placeholder="Enter formula or value"
+    />
+  </div>
+
+  <!-- Spreadsheet grid will be rendered here -->
+  <div id="spreadsheet" class="overflow-auto"></div>
+
+  <!-- Load our spreadsheet logic -->
+  <script type="module" src="./App.jsx"></script>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
 </html>
+
+
+
