@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Spreadsheet</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Mini Spread Sheet</h1>
+
+      <div class="formula-section">
+        <input id="cell-address" type="text" value="A1" readonly />
+        <span>fx</span>
+        <input
+          id="formula-input"
+          type="text"
+          placeholder="Enter formula or value"
+        />
+      </div>
+    </header>
+
+    <main>
+      <table id="grid"></table>
+    </main>
+
+    <input id="cell-editor" type="text" placeholder="Edit cell" />
+
+    <footer>
+      <div>
+        Selected Cell:
+        <strong id="status-cell">A1</strong>
+      </div>
+
+      <div id="status-value"></div>
+
+      <div>Use arrows to move | Press Enter to edit | Press Esc to cancel</div>
+    </footer>
+
+    <script src="spreadsheet.js"></script>
+  </body>
+</html>

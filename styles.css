@@ -1,0 +1,272 @@
+/* basic page setup */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1a1d23;
+    color: #dde1ea;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* top header */
+
+#app-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background-color: #22262e;
+    border-bottom: 1px solid #353b4a;
+}
+
+
+#app-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4f8ef7;
+}
+
+
+/* formula bar */
+
+#formula-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+
+#cell-address {
+    width: 60px;
+    background-color: #2b3040;
+    border: 1px solid #353b4a;
+    color: white;
+    padding: 4px;
+    text-align: center;
+    font-family: monospace;
+}
+
+
+#fx-label {
+    color: #7a8099;
+    font-family: monospace;
+}
+
+
+#formula-input {
+    flex: 1;
+    background-color: #2b3040;
+    border: 1px solid #353b4a;
+    color: white;
+    padding: 5px;
+    font-family: monospace;
+}
+
+
+#formula-input:focus {
+    border: 1px solid #4f8ef7;
+    outline: none;
+}
+
+
+/* spreadsheet area */
+
+#grid-wrapper {
+    flex: 1;
+    overflow: auto;
+}
+
+
+#grid {
+    border-collapse: collapse;
+    user-select: none;
+}
+
+
+/* top left corner */
+
+#grid .corner {
+    width: 45px;
+    background-color: #252932;
+    border: 1px solid #353b4a;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+
+/* column letters */
+
+#grid .col-header {
+    width: 96px;
+    height: 26px;
+    background-color: #252932;
+    border: 1px solid #353b4a;
+    color: #7a8099;
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+
+#grid .col-header.active {
+    background-color: #2b3040;
+    color: #4f8ef7;
+}
+
+
+/* row numbers */
+
+#grid .row-header {
+    width: 45px;
+    background-color: #252932;
+    border: 1px solid #353b4a;
+    color: #7a8099;
+    text-align: right;
+    padding-right: 6px;
+    font-size: 11px;
+    position: sticky;
+    left: 0;
+}
+
+
+#grid .row-header.active {
+    background-color: #2b3040;
+    color: #4f8ef7;
+}
+
+
+/* cells */
+
+#grid td.cell {
+    width: 96px;
+    height: 26px;
+    background-color: #22262e;
+    border: 1px solid #353b4a;
+    padding-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+#grid td.cell:hover {
+    background-color: #2b3040;
+}
+
+
+#grid td.cell.selected {
+    background-color: #1e3a5f;
+    outline: 2px solid #4f8ef7;
+}
+
+
+/* text inside cells */
+
+.cell-display {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    font-family: monospace;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.cell-display.is-number {
+    color: #a8d8a8;
+    text-align: right;
+}
+
+
+.cell-display.is-text {
+    color: #dde1ea;
+    text-align: left;
+}
+
+
+.cell-display.is-error {
+    color: #e05252;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* editing cell */
+
+#cell-editor {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    background-color: #1e3a5f;
+    border: 2px solid #4f8ef7;
+    color: white;
+    font-family: monospace;
+    padding: 3px;
+}
+
+
+/* bottom status bar */
+
+#status-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 12px;
+    background-color: #22262e;
+    border-top: 1px solid #353b4a;
+    color: #7a8099;
+    font-size: 11px;
+}
+
+
+#status-cell strong {
+    color: white;
+}
+
+
+#status-value {
+    color: #4f8ef7;
+    font-family: monospace;
+}
+
+
+#status-hint {
+    margin-left: auto;
+}
+
+
+/* scrollbar */
+
+#grid-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+
+#grid-wrapper::-webkit-scrollbar-track {
+    background-color: #1a1d23;
+}
+
+
+#grid-wrapper::-webkit-scrollbar-thumb {
+    background-color: #353b4a;
+}
+
+
+#grid-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #7a8099;
+}
