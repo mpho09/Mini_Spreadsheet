@@ -1,4 +1,4 @@
-/* basic page setup */
+
 
 * {
     box-sizing: border-box;
@@ -18,7 +18,7 @@ body {
 }
 
 
-/* top header */
+
 
 #app-header {
     display: flex;
@@ -37,7 +37,7 @@ body {
 }
 
 
-/* formula bar */
+
 
 #formula-bar {
     display: flex;
@@ -80,7 +80,7 @@ body {
 }
 
 
-/* spreadsheet area */
+
 
 #grid-wrapper {
     flex: 1;
@@ -94,7 +94,7 @@ body {
 }
 
 
-/* top left corner */
+
 
 #grid .corner {
     width: 45px;
@@ -106,7 +106,7 @@ body {
 }
 
 
-/* column letters */
+
 
 #grid .col-header {
     width: 96px;
@@ -128,7 +128,7 @@ body {
 }
 
 
-/* row numbers */
+
 
 #grid .row-header {
     width: 45px;
@@ -149,7 +149,7 @@ body {
 }
 
 
-/* cells */
+
 
 #grid td.cell {
     width: 96px;
