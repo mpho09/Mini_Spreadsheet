@@ -221,9 +221,6 @@ function splitFormula(formula) {
             continue;
         }
 
-
-
-        // unknown character
         return null;
     }
 
