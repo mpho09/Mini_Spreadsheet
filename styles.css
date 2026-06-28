@@ -1,272 +1,136 @@
-
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+
 body {
-    background-color: #1a1d23;
-    color: #dde1ea;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
+    font-family: Arial;
+    background-color: #1a1d23; /* blue background */
+    color: #000;
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-
-
-
-#app-header {
+/* header */
+header {
+    background-color: #f2f2f2;
+    padding: 6px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    background-color: #22262e;
-    border-bottom: 1px solid #353b4a;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
 }
 
 
-#app-title {
-    font-size: 14px;
+/* title */
+.h1 {
+    font-size: 30px;
+    color: green;
     font-weight: bold;
-    color: #4f8ef7;
 }
 
-
-
-
-#formula-bar {
+/* formula area */
+.formula-section {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     flex: 1;
+    margin: 10px;
 }
 
-
-#cell-address {
-    width: 60px;
-    background-color: #2b3040;
-    border: 1px solid #353b4a;
-    color: white;
-    padding: 4px;
-    text-align: center;
+.formula-section span {
     font-family: monospace;
+    color: #666;
 }
 
-
-#fx-label {
-    color: #7a8099;
-    font-family: monospace;
-}
-
-
+/* input box */
 #formula-input {
-    flex: 1;
-    background-color: #2b3040;
-    border: 1px solid #353b4a;
-    color: white;
+    width: 100%;
+    max-width: 400px;
     padding: 5px;
-    font-family: monospace;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    color: #000;
 }
-
 
 #formula-input:focus {
-    border: 1px solid #4f8ef7;
     outline: none;
+    border: 1px solid #191b1f;
 }
 
-
-
-
-#grid-wrapper {
+/* main area (keeps spreadsheet centered) */
+main {
     flex: 1;
-    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 6px;
+    overflow: hidden;
 }
 
-
+/* spreadsheet table stays WHITE */
 #grid {
     border-collapse: collapse;
-    user-select: none;
+    background-color: #fff; /* important */
 }
 
-
-
-
-#grid .corner {
-    width: 45px;
-    background-color: #252932;
-    border: 1px solid #353b4a;
-    position: sticky;
-    top: 0;
-    left: 0;
-}
-
-
-
-
-#grid .col-header {
-    width: 96px;
+/* cells */
+#grid td {
+    width: 1000px;
     height: 26px;
-    background-color: #252932;
-    border: 1px solid #353b4a;
-    color: #7a8099;
-    font-size: 11px;
-    text-align: center;
+    border: 1px solid #bbb;
+    font-size: 12px;
+    padding: 2px;
+    background-color: #fff;
+}
+
+/* headers */
+#grid th {
+    border: 1px solid #bbb;
+    background-color: #f2f2f2;
+    font-size: 12px;
     font-weight: bold;
-    position: sticky;
-    top: 0;
+    text-align: center;
 }
 
-
-#grid .col-header.active {
-    background-color: #2b3040;
-    color: #4f8ef7;
+/* hover */
+#grid td:hover {
+    background-color: #e9f1ff;
 }
 
-
-
-
-#grid .row-header {
-    width: 45px;
-    background-color: #252932;
-    border: 1px solid #353b4a;
-    color: #7a8099;
-    text-align: right;
-    padding-right: 6px;
-    font-size: 11px;
-    position: sticky;
-    left: 0;
-}
-
-
-#grid .row-header.active {
-    background-color: #2b3040;
-    color: #4f8ef7;
-}
-
-
-
-
-#grid td.cell {
-    width: 96px;
-    height: 26px;
-    background-color: #22262e;
-    border: 1px solid #353b4a;
-    padding-left: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-
-#grid td.cell:hover {
-    background-color: #2b3040;
-}
-
-
-#grid td.cell.selected {
-    background-color: #1e3a5f;
+/* selected cell */
+#grid td.selected {
     outline: 2px solid #4f8ef7;
 }
 
-
-/* text inside cells */
-
-.cell-display {
-    display: block;
-    height: 26px;
-    line-height: 26px;
-    font-family: monospace;
-    font-size: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-.cell-display.is-number {
-    color: #a8d8a8;
-    text-align: right;
-}
-
-
-.cell-display.is-text {
-    color: #dde1ea;
-    text-align: left;
-}
-
-
-.cell-display.is-error {
-    color: #e05252;
-    font-weight: bold;
-    text-align: center;
-}
-
-
-/* editing cell */
-
+/* editor */
 #cell-editor {
-    display: none;
     position: fixed;
-    z-index: 100;
-    background-color: #1e3a5f;
+    display: none;
     border: 2px solid #4f8ef7;
-    color: white;
-    font-family: monospace;
-    padding: 3px;
+    padding: 9px;
+    background-color: #fff;
+    color: #000;
 }
 
-
-/* bottom status bar */
-
-#status-bar {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 5px 12px;
-    background-color: #22262e;
-    border-top: 1px solid #353b4a;
-    color: #7a8099;
+/* footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 6px;
     font-size: 11px;
+    color: #333;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #ccc;
 }
 
-
-#status-cell strong {
-    color: white;
-}
-
-
+/* status */
 #status-value {
     color: #4f8ef7;
-    font-family: monospace;
-}
-
-
-#status-hint {
-    margin-left: auto;
-}
-
-
-/* scrollbar */
-
-#grid-wrapper::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-
-#grid-wrapper::-webkit-scrollbar-track {
-    background-color: #1a1d23;
-}
-
-
-#grid-wrapper::-webkit-scrollbar-thumb {
-    background-color: #353b4a;
-}
-
-
-#grid-wrapper::-webkit-scrollbar-thumb:hover {
-    background-color: #7a8099;
 }
