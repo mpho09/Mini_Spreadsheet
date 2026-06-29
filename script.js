@@ -1402,8 +1402,9 @@ const UI = {
 
 
 
-        this.address.value =
-            this.selectedCell;
+if (this.address) {
+            this.address.value = this.selectedCell;
+        }
 
 
 
