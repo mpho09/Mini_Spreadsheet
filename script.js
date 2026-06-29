@@ -1086,10 +1086,12 @@ const UI = {
 
 
 
-        let emptyCorner = document.createElement("th");
-
-        headerRow.appendChild(emptyCorner);
-
+        // let emptyCorner = document.createElement("th");
+        // emptyCorner.className = "row-header col-header";
+        // headerRow.appendChild(emptyCorner);
+        let cornerCell = document.createElement("th");
+        cornerCell.className = "row-header col-header";
+        headerRow.appendChild(cornerCell);
 
 
 
@@ -1402,7 +1404,7 @@ const UI = {
 
 
 
-if (this.address) {
+        if (this.address) {
             this.address.value = this.selectedCell;
         }
 
@@ -1587,10 +1589,13 @@ UI.startEdit = function (startText) {
 
 
 
-    if (startText !== undefined) {
+    // if (startText !== undefined) {
 
 
-        this.editor.value = startText;
+    //     this.editor.value = startText;
+
+if (startText !== undefined) {
+    this.editor.value = "";   
 
 
     } else {
